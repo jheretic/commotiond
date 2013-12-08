@@ -213,6 +213,20 @@ co_list_delete(co_obj_t *list, co_obj_t *item)
   return co_list_parse(list, _co_list_delete_i, (void *)item);
 }
 
+static co_obj_t *
+_co_list_destroy_i(co_obj_t *data, co_obj_t *current, void *context)
+{
+  current = _co_list_delete_i(data, current, current);
+  co_obj_free(current);
+  return NULL;
+}
+
+co_obj_t *
+co_list_delete_all(co_obj_t *list)
+{
+  return co_list_parse(list, _co_list_destroy_i, NULL);
+}
+
 co_obj_t *
 co_list_element(co_obj_t *list, const unsigned int index)
 {

@@ -66,6 +66,8 @@ int co_list_append(co_obj_t *list, co_obj_t *new_obj);
 
 co_obj_t *co_list_delete(co_obj_t *list, co_obj_t *item);
 
+co_obj_t *co_list_delete_all(co_obj_t *list);
+
 co_obj_t *co_list_element(co_obj_t *list, const unsigned int index);
 
 size_t co_list_raw(char *output, const size_t olen, co_obj_t *list);
